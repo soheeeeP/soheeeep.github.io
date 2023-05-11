@@ -1,1 +1,1 @@
-{"data":{"allMarkdownRemark":{"edges":[{"node":{"frontmatter":{"title":"Django에서 migration으로 테이블 관리하기","categories":"웹 프레임워크"},"fields":{"slug":"/template/"}}}]}}}
+{"data":{"allMarkdownRemark":{"edges":[{"node":{"frontmatter":{"title":"Django에서 migration으로 테이블 관리하기","categories":"웹 프레임워크"},"fields":{"slug":"/django-migration-management/"}}}]}}}
