@@ -66,9 +66,13 @@
   color: var(--content-text-color);
   font-family: $font-family;
   font-size: 16px;
-  font-weight: 500;
-  line-height: 1.5;
   word-wrap: break-word;
+
+  font-family: "Apple SD Gothic Neo";
+  letter-spacing: -0.35px;
+  font-weight: 300px;
+  line-height: 1.8;
+
 }
 
 .markdown details {
@@ -216,7 +220,7 @@
 
 .markdown h1,
 .markdown h2 {
-  font-weight: 600;
+  font-weight: 900;
 }
 
 .markdown h2 {
@@ -252,6 +256,7 @@
 .markdown p {
   margin-top: 0;
   margin-bottom: 10px;
+  font-family: "Spoqa Han Sans", "sans-serif";
 }
 
 .markdown blockquote {
@@ -283,7 +288,8 @@
 
 .markdown code,
 .markdown pre {
-  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+  // font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+  font-family: 'monospace';
   font-size: 12px;
 }
 
@@ -291,12 +297,24 @@
   border-radius: 3px;
   font-size: 85%;
   padding: 0.2em 0.4em;
+
 }
 
 .markdown :not(pre)>code.language-text {
-  background: rgba(135, 131, 120, 0.15);
-  color: #EB5757;
+  // background: rgba(135, 131, 120, 0.15);
+  // color: #EB5757;
   overflow-wrap: break-word;
+
+  font-size: 0.875rem;
+  font-family: 'IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Courier, monospace;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+
+  background-color: rgb(248, 248, 248);
+  color: rgb(68, 68, 68);
+  padding: 4px 8px;
+  margin: 0px 4px;
+  border-radius: 8px;
 }
 
 .markdown pre {
@@ -614,7 +632,7 @@
 .markdown kbd {
   display: inline-block;
   padding: 3px 5px;
-  font: 11px SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+  // font: 11px SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
   line-height: 10px;
   color: #444d56;
   vertical-align: middle;
@@ -698,6 +716,7 @@
 }
 
 .markdown h2 {
+  font-weight: 900;
   font-size: 1.5em;
 }
 
@@ -865,7 +884,9 @@
 
 .markdown .commit-tease-sha {
   display: inline-block;
-  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+  // font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+  font-family: 'monospace';
+
   font-size: 90%;
   color: #444d56;
 }
@@ -890,7 +911,10 @@
   min-width: 50px;
   padding-right: 10px;
   padding-left: 10px;
-  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+  // font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+  font-family: 'monospace';
+
+
   font-size: 12px;
   line-height: 20px;
   color: rgba(27, 31, 35, 0.3);
@@ -922,7 +946,9 @@
 
 .markdown .blob-code-inner {
   overflow: visible;
-  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+  // font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+  font-family: 'monospace';
+
   font-size: 12px;
   color: #24292e;
   word-wrap: normal;

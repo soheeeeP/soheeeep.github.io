@@ -1,26 +1,26 @@
 module.exports = {
-  title: `zoomkoding.com`,
-  description: `줌코딩의 개발일기`,
+  title: `@soheeeep`,
+  description: `새싹 개발일지`,
   language: `ko`, // `ko`, `en` => currently support versions for Korean and English
-  siteUrl: `https://www.zoomkoding.com`,
-  ogImage: `/og-image.png`, // Path to your in the 'static' folder
+  siteUrl: `https://soheeeep.github.io`,
+  ogImage: `/favicon.png`, // Path to your in the 'static' folder
   comments: {
     utterances: {
-      repo: ``, // `zoomkoding/zoomkoding-gatsby-blog`,
+      repo: `https://github.com/soheeeeP/soheeeep.github.io`, // `zoomkoding/zoomkoding-gatsby-blog`,
     },
   },
   ga: '0', // Google Analytics Tracking ID
   author: {
-    name: `정진혁`,
+    name: `박소희`,
     bio: {
       role: `개발자`,
-      description: ['사람에 가치를 두는', '능동적으로 일하는', '이로운 것을 만드는'],
-      thumbnail: 'sample.png', // Path to the image in the 'asset' folder
+      description: ['기술로 가치를 만들어내고 싶은', '도전을 즐기는'],
+      thumbnail: `author.png`, // Path to the image in the 'asset' folder
     },
     social: {
-      github: ``, // `https://github.com/zoomKoding`,
-      linkedIn: ``, // `https://www.linkedin.com/in/jinhyeok-jeong-800871192`,
-      email: ``, // `zoomkoding@gmail.com`,
+      github: `https://github.com/soheeeeP`,
+      linkedIn: `https://www.linkedin.com/in/so-hee-park/`,
+      email: `soheeeep212@gmail.com `,
     },
   },
 
@@ -43,45 +43,109 @@ module.exports = {
       // ========================================================
       // ========================================================
       {
-        date: '2021.02 ~',
-        activity: '개인 블로그 개발 및 운영',
+        date: '2022. 7. ~ 12.',
+        activity: '2022 오픈소스 컨트리뷰톤 아카테미',
         links: {
-          post: '/gatsby-starter-zoomkoding-introduction',
-          github: 'https://github.com/zoomkoding/zoomkoding-gatsby-blog',
-          demo: 'https://www.zoomkoding.com',
+          post: 'https://soheeeep.tistory.com/category/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4%20%EC%BB%A8%ED%8A%B8%EB%A6%AC%EB%B7%B0%ED%86%A4',
+          code: 'https://github.com/lablup/backend.ai/issues?q=assignee%3AsoheeeeP',
+        },
+      },
+      {
+        date: '2020. 2. ~ 2021. 2.',
+        activity: '서강대학교 IT 서비스 개발 동아리 멋쟁이사자처럼 8기',
+        links: {
+          github: 'https://github.com/soheeeeP/ChaekHwaJeom',
+        },
+      },
+      {
+        date: '2020. 8. ~ 12.',
+        activity: 'IBM C:Louders 1기',
+        links: {
+          post: 'https://soheeeep.tistory.com/category/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/IBM%20C%3ALouders',
+        },
+      },
+      {
+        date: '2020. 8.',
+        activity: '서강대학교-현대모비스 SW 인재양성 프로젝트',
+        links: {
+          github: 'https://github.com/soheeeeP/Autonomous-Car-Project',
+          post: 'https://soheeeep.tistory.com/category/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EC%9E%90%EC%9C%A8%EC%A3%BC%ED%96%89%20%EC%9E%90%EB%8F%99%EC%B0%A8%20%EC%A0%9C%EC%9E%91%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8',
         },
       },
     ],
 
+    opensources: [
+      //   // =====        [Open Source Sample and Structure]        =====
+      {
+        name: '',
+        description: '',
+        links: {
+          github: '',
+        }
+      },
+    //   // ========================================================
+      {
+        name: 'Backend.AI',
+        number: '#713',
+        description: 'storage-proxy 동작에 대해 권한이 없는 사용자의 접근을 제한하여 데이터 안정성 향상',
+        links: {
+          github: 'https://github.com/lablup/backend.ai/pull/713', 
+        },
+      },
+
+      {
+        name: 'Backend.AI',
+        number: '#721',
+        description: 'release note에 commit history를 추가하도록 Python 스크립트를 개선하여 효율성 증대',
+        links: {
+          github: 'https://github.com/lablup/backend.ai/pull/721', 
+        },
+      },
+      // {
+      //   name: 'Backend.AI',
+      //   description: '클라우드에서 효율적인 GPU 연산 환경의 컨테이너를 제공하는 파이선 오픈소스 플랫폼',
+      //   linkList: ['https://github.com/lablup/backend.ai/pull/713', 'https://github.com/lablup/backend.ai/pull/721'],
+      //   summaryList: ['storage-proxy 동작에 대해 권한이 없는 사용자의 접근을 제한하여 데이터 안정성 향상', 'release note에 commit history를 추가하도록 Python 스크립트를 개선하여 효율성 증대'],
+      // },
+    ],
+
     projects: [
-      // =====        [Project Sample and Structure]        =====
-      // ===== 🚫 Don't erase this sample (여기 지우지 마세요!)  =====
+    //   // =====        [Project Sample and Structure]        =====
+    //   // ===== 🚫 Don't erase this sample (여기 지우지 마세요!)  =====
       {
         title: '',
         description: '',
-        techStack: ['', ''],
+        techStack: [],
         thumbnailUrl: '',
         links: {
           post: '',
           github: '',
-          googlePlay: '',
-          appStore: '',
-          demo: '',
+          note: '',
         },
       },
-      // ========================================================
-      // ========================================================
+    //   // ========================================================
+    //   // ========================================================
       {
-        title: '개발 블로그 테마 개발',
-        description:
-          '개발 블로그를 운영하는 기간이 조금씩 늘어나고 점점 많은 생각과 경험이 블로그에 쌓아가면서 제 이야기를 담고 있는 블로그를 직접 만들어보고 싶게 되었습니다. 그동안 여러 개발 블로그를 보면서 좋았던 부분과 불편했던 부분들을 바탕으로 레퍼런스를 참고하여 직접 블로그 테마를 만들게 되었습니다.',
-        techStack: ['gatsby', 'react'],
-        thumbnailUrl: 'blog.png',
+        title: 'Scribble',
+        description: 'Django REST Framework와 React, PostgreSQL, Redis를 사용하여 개발한 필사노트 웹 서비스입니다. 책 속의 문장을 손으로 써서 저장하고 공유하며 생각을 공유할 수 있습니다. 필사노트 및 댓글 작성, 도서별 필사 페이지 모아보기, 약 80,000건의 도서 검색 기능을 제공합니다. ERD를 설계하고 REST API 서버를 개발하였으며, Github Action와 self-host runner를 적용하여 EC2 환경에서의 테스트, 빌드 및 릴리즈 프로세스를 자동화하였습니다.',
+        techStack: ['python', 'django', 'postgreSQL', 'docker-compose', 'github action', 'aws'],
+        thumbnailUrl: '/scribble_thumbnail.png',
         links: {
-          post: '/gatsby-starter-zoomkoding-introduction',
-          github: 'https://github.com/zoomkoding/zoomkoding-gatsby-blog',
-          demo: 'https://www.zoomkoding.com',
+          post: 'https://soheeeep.tistory.com/63',
+          github: 'https://github.com/M-TO-M/scribble_server',
+          note: 'https://www.notion.so/scribble-mtom/Scribble-2514789b139449c0acade9d332cc9703',
         },
+      },
+      {
+        title: 'Navigation Service For the Blind',
+        description: 
+          '시각장애인을 위한 Text-to-Speech 기반의 길 안내 iOS 어플리케이션입니다. Semantic Segmentation 기반의 DeeplabV3 모델을 사용하여 실시간 도로 영상을 분석하고 사물을 11개의 라벨로 구분합니다. 프레임의 연속성과 픽셀의 불연속성을 기반으로 한 Dual-Camera Callibration을 적용하여 3차원 공간에서의 분석 정확도를 개선했습니다. 캡스톤디자인I 프로젝트 1위를 차지했으며, 기술 특허(제10-2021-0061396호)를 출원하였습니다.',
+        techStack: ['swift', 'firebase'],
+        thumbnailUrl: '/bme_thumbnail.png',
+        links: {
+          github: 'https://github.com/soheeeeP/Be-My-Eyes',
+          note: 'https://doi.org/10.8080/1020210061396',
+        }
       },
     ],
   },

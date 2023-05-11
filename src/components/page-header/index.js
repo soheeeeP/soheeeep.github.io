@@ -1,4 +1,4 @@
-import { Link, StaticQuery, graphql } from 'gatsby';
+import { Link, useStaticQuery, graphql } from 'gatsby';
 import React from 'react';
 import Post from '../../models/post';
 import PostSearch from '../post-search';
@@ -6,7 +6,7 @@ import './style.scss';
 
 function PageHeader({ siteTitle }) {
   return (
-    <StaticQuery
+    <useStaticQuery
       query={graphql`
         query SearchIndexQuery {
           allMarkdownRemark(sort: { fields: frontmatter___date, order: DESC }) {

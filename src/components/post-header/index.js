@@ -9,6 +9,7 @@ function PostHeader({ post, viewCount }) {
       <div className="info">
         <div className="categories">
           {post.categories.map((category) => (
+            // <div key={category} className="category">{category}</div>
             <Link className="category" key={category} to={`/posts/${category}`}>
               {category}
             </Link>

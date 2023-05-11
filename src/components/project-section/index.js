@@ -13,14 +13,12 @@ function ProjectSection({ projects }) {
         index === 0 ? null : (
           <div className="project" key={index}>
             <div className="head">
-              {project.title}&nbsp;&nbsp;
+              {project.title}
               {project.links && (
                 <IconButtonBar links={project.links} style={{ color: '#a8a8a8', fontSize: 24 }} />
               )}
             </div>
             <div className="body">
-              <Image className="thumbnail" src={project.thumbnailUrl} />
-
               {project.techStack && (
                 <div className="tech-stack">
                   {project.techStack.map((tech, index) => (
@@ -30,7 +28,11 @@ function ProjectSection({ projects }) {
                   ))}
                 </div>
               )}
-              <div className="description">{project.description}</div>
+              <div className="body-detail">
+                <img class="thumbnail" src={project.thumbnailUrl} />
+                {/* <Image className="thumbnail" src={project.thumbnailUrl} /> */}
+                <div className="description">{project.description}</div>
+              </div>
             </div>
           </div>
         ),

@@ -5,16 +5,18 @@ import Seo from '../components/seo';
 import Bio from '../components/bio';
 import TimeStampSection from '../components/timestamp-section';
 import ProjectSection from '../components/project-section';
+import OpenSourceSection from '../components/open-source-section';
 
 function AboutPage({ data }) {
   const metaData = data.site.siteMetadata;
   const { author, about, language } = metaData;
-  const { timestamps, projects } = about;
+  const { timestamps, opensources, projects } = about;
   return (
     <Layout>
       <Seo title="About" />
       <Bio author={author} language={language} />
       <TimeStampSection timestamps={timestamps} />
+      <OpenSourceSection opensources={opensources} />
       <ProjectSection projects={projects} />
     </Layout>
   );
@@ -51,11 +53,19 @@ export const pageQuery = graphql`
               post
               github
               demo
-              googlePlay
-              appStore
+              code
             }
           }
 
+          opensources {
+            name
+            number
+            description
+            links {
+              github
+            }
+          }
+          
           projects {
             title
             description
@@ -64,9 +74,7 @@ export const pageQuery = graphql`
             links {
               post
               github
-              demo
-              googlePlay
-              appStore
+              note
             }
           }
         }

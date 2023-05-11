@@ -27,29 +27,46 @@
       flex-direction: column;
       width: 100%;
 
-      .thumbnail {
+      .body-detail {
+        display: flex;
+        flex-direction: row;
         width: 100%;
-        margin-bottom: 10px;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .thumbnail {
+        width: 30%;
+        max-width: fit-content;
+        // margin-bottom: 10px;
+        margin-right: 30px;
       }
 
       .tech-stack {
         display: flex;
-        margin-bottom: 10px;
+        margin-bottom: 20px;
 
         .tech {
           background-color: var(--chip-background-color);
-          border-radius: 10px;
-          font-size: 15px;
-          font-weight: 500;
-          margin-right: 5px;
+          border-radius: 8px;
+          font-size: 12px;
+          font-weight: 800;
+          word-spacing: -3px;
+          margin-right: 10px;
           padding: 5px 7px 5px 7px;
+          font-family: monospace;
+          // color: #444;
+          // background: #f0f0f0;
+          border: 1px solid rgba(11, 131, 230, 0.4);
+          color: #0b83e6;
+          background: rgba(11, 131, 230, 0.04);
         }
       }
 
       .description {
         font-size: 16px;
         font-weight: 400;
-        line-height: 1.4;
+        line-height: 2;
       }
 
 
