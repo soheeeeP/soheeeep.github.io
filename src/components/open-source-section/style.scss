@@ -54,10 +54,7 @@
         margin-left: 5px;
         margin-right: 5px;
         padding-right: 10px;
-        width: 115px;
-        min-width: 115px;
 
-        // align-self: center;
         align-items: baseline;
 
         @include md {
@@ -72,7 +69,7 @@
             padding-right: 5px;
         }
         .number {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 400;
             align-self: center;
             padding-right: 5px;
@@ -89,68 +86,15 @@
       .description {
         font-size: 15px;
         line-height: 23px;
+        width: 400px;
+        min-width: 120px;
+
+        @include md {
+          width: 400px;
+          min-width: 120px;
+        }
+
+      }
     }
-    }
-    }
+  }
 }
-
-// .opensource-section {
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: center;
-//     align-items: center;
-//     width: 100%;
-
-//     .opensource {
-//         padding: 15px;
-//         display: flex;
-//         flex-direction: column;
-//         margin-bottom: 30px;
-//         width: 100%;
-
-//         .head {
-//             margin-bottom: 10px;
-//             line-height: 30px;
-//             font-size: 20px;
-//             font-weight: 700;
-//         }
-
-//         .description {
-//             color: #828282;
-//             align-self: center;
-//             font-size: 16px;
-//             font-weight: 600;
-//         }
-
-//         .body {
-//             display: flex;
-//             flex-direction: row;
-//             width: 100%;
-//             padding: 0 5px;
-
-//             font-size: 18px;
-//             font-weight: 400;
-//             align-items: center;
-            
-//             .link-list {
-//                 display: flex;
-//                 flex-direction: column;  
-//                 justify-items: center;              
-//             }
-//             .summary-list {
-//                 display: flex;
-//                 flex-direction: column;
-//                 align-self: center;
-
-//                 .summary {
-//                     padding-left: 10px;
-//                     font-size: 16px;
-//                     font-weight: 400;
-//                     // line-height: 2;
-//                     // padding-left: 10px;
-//                     line-height: 30px;
-//                     // color: #828282;
-//                 }
-//             }
-//         }
-//     }

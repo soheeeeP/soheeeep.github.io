@@ -56,13 +56,17 @@
 
     .info {
       display: flex;
-      justify-content: space-between;
+      // justify-content: space-between;
       margin-top: auto;
-      font-size: 14px;
+      font-size: 12px;
       color: var(--about-link-icon-color);
-
+      
+      .date {
+        padding-right: 4px;
+      }
       .categories {
         display: flex;
+        padding-left: 4px;
 
         .category {
           margin-left: 4px;

@@ -23,7 +23,7 @@ function BlogTemplate({ data }) {
     const key = curPost.slug.replace(/\//g, '');
 
     fetch(
-      `https://api.countapi.xyz/${
+      `https://soheeeep.github.io/${
         process.env.NODE_ENV === 'development' ? 'get' : 'hit'
       }/${namespace}/${key}`,
     ).then(async (result) => {

@@ -62,16 +62,15 @@
 .markdown {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-  line-height: 1.5;
   color: var(--content-text-color);
-  font-family: $font-family;
+
   font-size: 16px;
   word-wrap: break-word;
 
   font-family: "Apple SD Gothic Neo";
   letter-spacing: -0.35px;
   font-weight: 300px;
-  line-height: 1.8;
+  line-height: 2;
 
 }
 
@@ -315,6 +314,17 @@
   padding: 4px 8px;
   margin: 0px 4px;
   border-radius: 8px;
+}
+
+.markdown :not(pre) > pre[class*=language-] {
+  background: rgb(248, 248, 248);
+}
+
+.markdown code[class*=language-], pre[class*=language-] {
+  color: #393A34;
+  font-size: 0.7em;
+  font-weight: 400;
+  font-family: 'IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Courier, monospace;
 }
 
 .markdown pre {
@@ -1052,7 +1062,7 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  width: 340px;
+  width: 300px;
   position: fixed;
   top: 75px;
   right: 0px;
@@ -1060,6 +1070,7 @@
   ul {
     cursor: pointer;
     list-style-type: none;
+    line-height: 1.5em;
 
     li {
       a {
@@ -1067,7 +1078,7 @@
         height: 30px;
         padding: 6px 2px;
         color: var(--secondary-text-color);
-        font-size: 14px;
+        font-size: 12px;
         border-bottom: none;
       }
     }
@@ -1082,7 +1093,7 @@
 .markdown .gatsby-resp-image-wrapper {
   display: flex !important;
   justify-content: center !important;
-  width: 100% !important;
+  width: 80% !important;
   max-height: $content-image-max-height !important;
 
   img {
@@ -1096,9 +1107,10 @@
 
 // caption
 .markdown .gatsby-resp-image-wrapper+em {
+  padding-top: 10px;
   display: block;
   text-align: center;
   font-style: italic;
-  font-size: 15px;
+  font-size: 10px;
   color: #6a737d;
 }

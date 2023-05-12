@@ -15,8 +15,9 @@ categories: 웹 프레임워크
 
 다소 긴 삽질의 과정을 경험하며, 내가 migration에 대하여 정확히 이해를 하지 못하고 있음을 깨달았다.
 
-&nbsp;
-## 💡 Migration이란?
+<br>
+
+## Migration이란?
 일종의 database version control log라고 이해하면 될 것 같다. 
 `python manage.py makemigrations` 명령어를 수행하면 각 app의 모델에 대한 변경사항을 기록한 python script가 자동으로 생성되고
 
@@ -64,12 +65,13 @@ class Migration(migrations.Migration):
     ]
 ```
 
-&nbsp;
-## 🔑  적용된 migration 확인하기
+<br>
+
+## 적용된 migration 확인하기
 migration 적용 내역은 `django_migrations` 테이블에 저장되는데
 이 때 데이터베이스에 migration 내용은 저장되지 않는다. 적용 순서, script명, 시간 정도의 데이터만 확인할 수 있다.
 
-![migration_001.png](./[migration_001.png])
+![migration-001.png](./migration-001.png)
 
 
 따라서 이미 적용된 migration script를 수정한 뒤 다시 migrate를 수행한다고 해도 `django_migration` 테이블에 변경 내용은 저장되지 않는다.
@@ -77,10 +79,11 @@ migration 적용 내역은 `django_migrations` 테이블에 저장되는데
 
 `python manage.py showmigrations` 를 통해서도 한눈에 migration 적용상태를 확인할 수 있다.
 
-![migration_002.png](./[migration_002.png])
+![migration-002.png](./migration-002.png)
 
-&nbsp;
-## 🤷🏻‍♂️ 이미 적용된 migration을 Revert하고 싶은 경우?
+<br><br>
+
+## 이미 적용된 migration을 Revert하고 싶은 경우?
 
 아래와 같이 Revert하고자 하는 app의 이름과 migration 번호를 명시하면 된다.
 
@@ -96,8 +99,9 @@ $ python manage.py migrate [app_name] [number]
 삭제된 migration을 복구할 수 없는 경우라면 직접 데이터베이스의 테이블을 수정해야 한다.
 
 
-&nbsp;
-## 🤷🏼‍♀️ 이미 적용된 migration 내용을 수정하고 싶은 경우?
+<br>
+
+## 이미 적용된 migration 내용을 수정하고 싶은 경우?
 
 n번째 migration 적용 내역을 수정하고 싶다면 어떻게 하면 될까?
 n+1번째의 새로운 migration script를 생성하면 된다. 위에 언급한 것처럼
@@ -106,9 +110,9 @@ n+1번째의 새로운 migration script를 생성하면 된다. 위에 언급한
 그래도 n번째로 적용된 migration을 수정하는 방향으로 개발을 하고 싶다면,
 이전 n-1번째 version으로 revert를 수행한뒤에 새롭게 n번째 migration script를 생성하고 적용하면 된다.
 
+<br>
 
-&nbsp;
-## 🤷🏻 migration을 Squash하여 log를 관리하고 싶은 경우?
+## migration을 Squash하여 log를 관리하고 싶은 경우?
 
 `python manage.py squashmigrations`를 사용하여
 존재하는 많은 수의 migration을 한 개(또는 그 이상)의 migration으로 합쳐서 관리할 수 있다.
@@ -137,6 +141,7 @@ Created new squashed migration /home/andrew/Programs/DjangoTest/test/migrations/
   you can delete them.
 ```
 
+<br>
 
 ``` toc
 ```

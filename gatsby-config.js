@@ -65,6 +65,12 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          // {
+          //   resolve: `gatsby-remark-highlight-code`,
+          //   options: {
+          //     theme: "base16-light",
+          //   }
+          // },
           {
             resolve: `gatsby-remark-images`,
             options: {

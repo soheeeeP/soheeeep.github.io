@@ -25,7 +25,7 @@
       padding: 10px 0;
       border-left: 2px solid #bdbdbd;
 
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 400;
 
       &:first-child {
@@ -47,6 +47,11 @@
         border-radius: 10px;
         transform: translatex(-50%);
         border: 2px solid #828282;
+      }
+
+      @include md {
+        font-size: 18px;
+        font-weight: 400;
       }
 
       .date {

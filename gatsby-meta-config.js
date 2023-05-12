@@ -1,9 +1,9 @@
 module.exports = {
   title: `@soheeeep`,
-  description: `새싹 개발일지`,
+  description: `개발의 즐거움은 '함께 가치를 만들어 나가는 것'이라 생각합니다. 도전을 통한 성취를 원동력으로 하루하루 나아갑니다. 공부하고 경험한 내용들을 기록하고 있습니다.`,
   language: `ko`, // `ko`, `en` => currently support versions for Korean and English
   siteUrl: `https://soheeeep.github.io`,
-  ogImage: `/favicon.png`, // Path to your in the 'static' folder
+  ogImage: `/author.png`, // Path to your in the 'static' folder
   comments: {
     utterances: {
       repo: `https://github.com/soheeeeP/soheeeep.github.io`, // `zoomkoding/zoomkoding-gatsby-blog`,

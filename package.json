@@ -5,6 +5,7 @@
   "version": "3.0.0",
   "author": "zoomkoding <zoomkoding@gmail.com>",
   "dependencies": {
+    "@deckdeckgo/highlight-code": "^3.6.0",
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
     "@fontsource/ibm-plex-mono": "^4.5.13",
@@ -23,6 +24,7 @@
     "gatsby-plugin-sharp": "^4.9.1",
     "gatsby-remark-autolink-headers": "^5.9.0",
     "gatsby-remark-copy-linked-files": "^5.9.0",
+    "gatsby-remark-highlight-code": "^3.3.0",
     "gatsby-remark-images": "^6.9.1",
     "gatsby-remark-prismjs": "^6.25.0",
     "gatsby-remark-responsive-iframe": "^5.9.0",

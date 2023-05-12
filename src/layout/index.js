@@ -5,6 +5,9 @@ import PageFooter from '../components/page-footer';
 import ThemeSwitch from '../components/theme-switch';
 import './style.scss';
 
+import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
+deckDeckGoHighlightElement();
+
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
