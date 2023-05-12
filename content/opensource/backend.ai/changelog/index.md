@@ -8,6 +8,7 @@ categories: 오픈소스
 
 
 ## Issue Contents [#691](https://github.com/lablup/backend.ai/issues/691)
+
 release note(`CHANGELOG.md`)에 커밋 히스토리 기록을 추가하도록 `scripts/extract-release-changelog.py`를 수정한다.
 
 <br>

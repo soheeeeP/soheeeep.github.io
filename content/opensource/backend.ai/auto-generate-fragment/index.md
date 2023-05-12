@@ -7,6 +7,7 @@ categories: 오픈소스
 ---
 
 ## Issue Contents [#742](https://github.com/lablup/backend.ai/issues/742)
+
 프로젝트에 새롭게 기여하는 컨트리뷰터들에게 news fragment 작성 방법을 설명하는 번거로움을 덜기 위하여
 PR제목을 수정할 경우 towncrier news fragment를 자동으로 생성/수정하도록 workflow를 구현하자.
 - PR에 assign된 label과 매칭되는 news fragment를 가져오고, PR 제목이 변경될 경우 그 내용을 자동으로 수정/commit/push한다

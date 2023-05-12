@@ -7,6 +7,7 @@ categories: 오픈소스
 ---
 
 ## Issue Contents [#575](https://github.com/lablup/backend.ai/issues/575)
+
 vfolder clone, delete와 같은 storage-proxy operation 작업을 수행할 때, 사용자의 접근을 제어할 수 있도록 vfolder 상태값을 관리하려고 한다.
 
 <br>

@@ -7,6 +7,7 @@ categories: 오픈소스
 ---
 
 ## Issue Contents [#614](https://github.com/lablup/backend.ai/issues/614)
+
 존재하지 않는 이미지로 세션을 생성할 때 발생하는 ImageNotFound 에러의 메세지 typo errorf를 수정한다.
 
 ## Ideation & Issue Solving

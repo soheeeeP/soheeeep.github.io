@@ -6,18 +6,23 @@ import Bio from '../components/bio';
 import TimeStampSection from '../components/timestamp-section';
 import ProjectSection from '../components/project-section';
 import OpenSourceSection from '../components/open-source-section';
+import EducationSection from '../components/education-section';
+import AdditionalSection from '../components/additional-section';
+
 
 function AboutPage({ data }) {
   const metaData = data.site.siteMetadata;
   const { author, about, language } = metaData;
-  const { timestamps, opensources, projects } = about;
+  const { timestamps, opensources, projects, educations, items } = about;
   return (
     <Layout>
       <Seo title="About" />
       <Bio author={author} language={language} />
+      <EducationSection educations={educations} />
       <TimeStampSection timestamps={timestamps} />
       <OpenSourceSection opensources={opensources} />
       <ProjectSection projects={projects} />
+      <AdditionalSection items={items} />
     </Layout>
   );
 }
@@ -77,6 +82,21 @@ export const pageQuery = graphql`
               note
             }
           }
+
+          educations {
+            name
+            date
+            degree
+            credit
+          }
+
+          items {
+            title
+            date
+            agency
+            description
+          }
+
         }
       }
     }

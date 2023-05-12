@@ -1,0 +1,100 @@
+@use '../../styles/variables'as *;
+@use '../../styles/mixins'as *;
+
+.additional-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+    margin-bottom: 50px;
+    padding: 0 20px;
+    word-break: keep-all;
+
+    .item {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+
+        margin-left: 5px;
+        margin-right: 20px;
+        padding: 10px 0;
+        border-left: 2px solid #bdbdbd;
+        
+
+        .intro {  
+            display: flex;
+            align-self: center;
+            width: 300px;
+
+            padding-right: 10px;
+
+            font-size: 18px;
+            font-weight: 600;
+      
+            &:first-child {
+              padding-top: 7px;
+            }
+      
+            &:last-child {
+              padding-bottom: 7px;
+            }
+      
+            &::before {
+              position: relative;
+              left: -1px;
+              content: '';
+              align-self: center;
+              width: 10px;
+              height: 10px;
+              background-color: var(--background-color);
+              border-radius: 10px;
+              transform: translatex(-50%);
+              border: 2px solid #828282;
+            }
+
+            @include md {
+                width: 300px;
+                min-width: 300px;
+            }
+              
+            .head {
+                display: flex;
+                flex-direction: column;
+
+                margin-left: 5px;
+                margin-right: 5px;
+
+                .head-detail {
+                    display: flex;
+                    flex-direction: row;                
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+    
+                    font-size: 16px;
+                    font-weight: 400;
+                    color: #828282;
+    
+                    align-items: baseline;
+    
+                    .date {
+                        padding-right: 5px;
+                    }
+    
+                    .agency {
+                        padding-left: 5px;
+                    }
+                }
+            }
+        }
+
+        .body {
+            width: 400px;
+            padding-top: 10px;
+
+            .description {
+                font-size: 16px;
+            }
+        }
+    }
+}
