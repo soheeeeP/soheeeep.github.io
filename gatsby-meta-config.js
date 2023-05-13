@@ -161,7 +161,7 @@ module.exports = {
       {
         name: '서강대학교',
         date: '2017. 3 ~ 2021. 2',
-        degree: '서강대학교 컴퓨터공학과 학사',
+        degree: '컴퓨터공학과 학사',
         credit: '3.45 / 4.5',
       }
     ],
@@ -170,6 +170,9 @@ module.exports = {
       //   // =====        [Item Sample and Structure]        =====
       {
         title: '',
+        links: {
+          post: '',
+        },
         date: '',
         agency: '',
         description: '',
@@ -178,18 +181,27 @@ module.exports = {
       //   // ========================================================
       {
         title: '오픈소스 컨트리뷰션 아카테미 장려상',
+        links: {
+          post: '',
+        },
         date: '2022. 12',
         agency: '정보통신산업진흥원',
         description: 'Backend.AI팀 리드멘티',
       },
       {
         title: '시각장애인 보행 보조 시스템',
+        links: {
+          post: 'https://doi.org/10.8080/1020210061396',
+        },
         date: '2021. 8',
         agency: '특허청',
-        description: '고유번호 ― 제10-2021-0061396호',
+        description: '제10-2021-0061396호',
       },
       {
         title: '서강 창업 아이디어톤 3위',
+        links: {
+          post: '',
+        },
         date: '2021. 2',
         agency: '서강대학교',
         description: '뜻밖의 지혜를 만날 수 있는 공간 “책화점” ',

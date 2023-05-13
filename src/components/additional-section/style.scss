@@ -18,19 +18,21 @@
 
         margin-left: 5px;
         margin-right: 20px;
-        padding: 10px 0;
+        padding-top: 10px 0;
         border-left: 2px solid #bdbdbd;
         
 
         .intro {  
             display: flex;
             align-self: center;
-            width: 300px;
+            width: 400px;
 
             padding-right: 10px;
 
             font-size: 18px;
             font-weight: 600;
+
+            height: 130px;
       
             &:first-child {
               padding-top: 7px;
@@ -54,46 +56,56 @@
             }
 
             @include md {
-                width: 300px;
+                width: 400px;
                 min-width: 300px;
             }
               
             .head {
                 display: flex;
                 flex-direction: column;
+                height: 90px;
 
                 margin-left: 5px;
                 margin-right: 5px;
+                font-size: 18px;
+                font-weight: 700;
+
+                .head-main {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    line-height: 25px;
+                }
 
                 .head-detail {
                     display: flex;
-                    flex-direction: row;                
+                    flex-direction: column;                
                     padding-top: 10px;
-                    padding-bottom: 10px;
     
-                    font-size: 16px;
+                    white-space: nowrap;
+                    
+                    font-size: 14px;
                     font-weight: 400;
                     color: #828282;
     
                     align-items: baseline;
     
                     .date {
-                        padding-right: 5px;
+                        padding-bottom: 10px;
                     }
     
                     .agency {
-                        padding-left: 5px;
                     }
                 }
             }
         }
 
         .body {
-            width: 400px;
-            padding-top: 10px;
+            width: 100%;
 
             .description {
                 font-size: 16px;
+                line-height: 28px;
             }
         }
     }

@@ -92,6 +92,9 @@ export const pageQuery = graphql`
 
           items {
             title
+            links {
+              post
+            }
             date
             agency
             description

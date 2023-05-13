@@ -13,10 +13,14 @@ function AdditionalSection({ items }) {
                     <div className="item" key={index}>
                         <div className="intro">
                             <div className="head">
-                                {item.title}
+                                <div className="head-main">
+                                    {item.title}
+                                    {item.links && (
+                                        <IconButtonBar links={item.links} style={{ color: '#a8a8a8', fontSize: 16, padding: 0 }} />
+                                    )}
+                                </div>
                                 <div className="head-detail">
                                     <div className="date">{item.date}</div>
-                                    |
                                     <div className="agency">{item.agency}</div>
                                 </div>
                             </div>
