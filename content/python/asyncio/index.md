@@ -1,0 +1,114 @@
+---
+emoji: 💭
+title: 파이선에서 asyncio로 비동기 처리하기
+date: '2023-05-14 23:33:00'
+author: 소희
+categories: python
+---
+
+## 비동기 프로그래밍과 동작원리
+
+<b>비동기(asynchronous)</b> 처리는 현재 실행 중인 작업이 완료되지 않은 상태에서 다른 작업을 처리하도록 요청할 수 있는 방식이다. <b>동기(synchronous)</b> 처리와 다르게 여러 작업을 동시에 실행할 수 있다는 장점이 있다. 
+
+파이선에서는 비동기 프로그래밍을 적용하여 동시성을 보장하기 위해 `asyncio`라는 모듈을 사용한다. 
+
+<br>
+
+## Coroutine(코루틴)
+
+특정 함수를 실행할 때, 반복되는 작업을 개별 함수로 분리하고 이를 호출하여 사용할 수 있다. 여기서 호출되어 수행되는 흐름을 `Sub Routine`이라고 한다. `Sub Routine`은 하나의 entry point를 가지고 있으며 호출되는 `Main Routine`에 종속적이라는 특징을 가지고 있다. 
+
+`Coroutine`이란 서브 루틴처럼 특정 함수의 실행에 종속되어 있는 것이 아닌, 대등한 관계를 가지고 서로 순차적으로 호출할 수 있도록 구현된 함수라고 할 수 있다. `Sub Routine`과 달리 여러 개의 entry point와 exit point를 가진다.
+`Coroutine`을 이해하기 위해 아래 개념들을 알 필요가 있다.
+
+<br>
+
+### Iterator(이터레이터)
+순서대로 값을 리턴할 수 있는 객체이다. 필요한 값을 메모리에 할당하고, 반환하도록 동작하여 메모리를 효율적으로 사용할 수 있다. `iter(object)` 또는 `object.__iter__()`를 사용하여 정의할 수 있고, `object.__next__()` 메소드를 호출하여 객체를 호출될 때마다 다음 값을 리턴하게 구현할 수 있다. 또한 특정 object에 `iter()`함수를 사용할 때마다 새로운 `Iterator` 객체가 생성되고, 각각의 객체들은 서로 독립적인 상태를 가지게 된다.   
+이러한 특성을 활용하여 <b>필요한 시점에 객체를 호출하여 여러 작업을 번갈아가면서 수행</b>하도록 구현할 수 있다.
+가장 간단하게 for문으로 수행하는 파이선의 `range()` 함수를 예로 들 수 있다. iteratable한 객체, 즉 반복이 가능한 객체를 메모리에 할당하지 않고 순차적으로 사용할 수 있다.
+``` python
+# 0 ~ 99의 integer를 별도의 메모리 공간에 할당해두지 않고, iteration이 될 때마다 꺼내어서 사용
+for i in range(100): 
+    sum += i
+```
+<br>
+
+### Generator(제너레이터)
+`__iter__()`를 사용하지 않고도 `Iterator` 객체를 생성할 수 있다. 가장 큰 차이는 `yield`를 사용하여 중단점을 설정하고 작업을 재개할 수 있도록 구현되었다는 점이다. `generator` 객체를 생성한 뒤 `next(object)`를 호출해야 작업이 시작되며, 실행 시마다 값을 메모리에 할당하여 사용한다.  
+``` python
+def generator(nums):
+    for i in nums:
+        yield i
+``` 
+``` bash
+print(generator([1, 2, 3, 4, 5]))       # 값들이 메모리에 적재되어 있지 않고, 객체만 생성된 상태
+>> <generator object generator at 0x00E35568>
+``` 
+<br>
+
+`generator`를 호출하는 함수를 `caller`라고 하자. 
+`caller`에서 `next(object)`를 호출하면 제어권이 `generator`로 전달되고, 로직에 따라 작업을 수행한다. `yield` 구문을 만나면, 실행 결과를 저장하고 다시 caller쪽으로 제어권을 반환한다. `caller`가 `generator`로 값을 전달할 때는 `object.send(value)` 함수를 사용하면 된다. (아직 시작이 되지 않은 generator에는 `None`값만 전달할 수 있다.  
+
+``` python
+def generator_coroutine():
+    print('callee 1')
+    x = yield 1
+    print('callee 2: %d' % x)
+    x = yield 2
+	
+task = generator_coroutine()
+i = next(task)    # i = 1 / caller 1 출력
+i = task.send(10) # i = 2 / caller 2: 10 출력
+``` 
+<br>
+
+두 개 이상의 `Generator`가 서로 값을 주고받으면서 교차적으로 수행할 수 있어서 `lightweight coroutine`이라고 표현하기도 한다. 하나의 thread 위에서 여러 실행 흐름이 존재할 수 있도록 구현함으로서 작업들이 동시에 진행되는 것처럼 처리할 수 있다. 
+
+`yield from` 구문을 사용하여 `Coroutine` 내부에서 `Sub Coroutine`을 사용하도록 구현할 수도 있다.
+``` python
+def generator():
+	yield from generator_2()
+	yield from generator_3()
+``` 
+<br>
+
+> 파이선에서는 `yield`를 사용하는 `coroutin`e을 `Generator-based coroutine`이라고 부르고, `asyncio` 모듈에서 지원하는 `async/await` 키워드를 사용하여 `coroutine`을 정의하는 방식을 `Native coroutine`이라고 부른다.
+
+<br>
+
+## Event Loop
+
+파이선 `asyncio`에서는 `coroutine`과 `event loop`를 사용하여 비동기 프로그래밍을 지원한다.  
+event loop는 등록된 여러 코루틴 사이의 실행권을 가지고 연산을 수행시키는 역할을 한다. 전달받은 `coroutine` 객체는 `async def`를 사용하여 정의된 함수여야 한다.
+
+``` python
+async def coroutine():
+    print('coroutine')
+    await asyncio.sleep(0.1)
+    return 1
+
+loop = asyncio.get_event_loop()
+# 더 이상 수행될 task가 없을때까지 무한히 loop를 돌며 전달받은 coroutine 객체를 처리
+loop.run_until_complete(coroutine())
+# event loop에 아직 실행이 종료되지 않은 task가 남아있다면, 모두 제거
+loop.close()
+```
+
+<br>
+
+### Future(퓨쳐)와 Task(테스크)
+
+`coroutine` 내부에서 다른 작업, 즉 `sub coroutine`을 수행하는 경우에는 `Future`, `Task`와 같은 `Awaitable`한 객체(실행을 종료할 때까지 기다릴 객체)를 `await`과 함께 사용해야 한다.  
+
+`Future`는 어떠한 작업의 실행 상태 및 결과를 저장하는 객체로, `add_done_callback()`으로 완료 시에 호출할 콜백함수를 등록할 수 있다. `.result()`로 실행결과를 반환하며, 작업의 실행을 시작하는 역할은 수행하지 않는다.
+
+<br>
+
+### Event Loop가 Coroutine을 실행하는 방식
+
+... 
+<br>
+
+``` toc
+``` 
