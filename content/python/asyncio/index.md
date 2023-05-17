@@ -8,7 +8,7 @@ categories: python
 
 ## 비동기 프로그래밍과 동작원리
 
-<b>비동기(asynchronous)</b> 처리는 현재 실행 중인 작업이 완료되지 않은 상태에서 다른 작업을 처리하도록 요청할 수 있는 방식이다. <b>동기(synchronous)</b> 처리와 다르게 여러 작업을 동시에 실행할 수 있다는 장점이 있다. 
+**비동기(asynchronous)** 처리는 현재 실행 중인 작업이 완료되지 않은 상태에서 다른 작업을 처리하도록 요청할 수 있는 방식이다. **동기(synchronous)** 처리와 다르게 여러 작업을 동시에 실행할 수 있다는 장점이 있다. 
 
 파이선에서는 비동기 프로그래밍을 적용하여 동시성을 보장하기 위해 `asyncio`라는 모듈을 사용한다. 
 
@@ -73,14 +73,18 @@ def generator():
 ``` 
 <br>
 
-> 파이선에서는 `yield`를 사용하는 `coroutin`e을 `Generator-based coroutine`이라고 부르고, `asyncio` 모듈에서 지원하는 `async/await` 키워드를 사용하여 `coroutine`을 정의하는 방식을 `Native coroutine`이라고 부른다.
+> **_NOTE:_** 파이선에서는 `yield`를 사용하는 `coroutine`을 `Generator-based coroutine`이라고 부르고, `asyncio` 모듈에서 지원하는 `async/await` 키워드를 사용하여 `coroutine`을 정의하는 방식을 `Native coroutine`이라고 부른다.
 
 <br>
 
 ## Event Loop
 
 파이선 `asyncio`에서는 `coroutine`과 `event loop`를 사용하여 비동기 프로그래밍을 지원한다.  
-event loop는 등록된 여러 코루틴 사이의 실행권을 가지고 연산을 수행시키는 역할을 한다. 전달받은 `coroutine` 객체는 `async def`를 사용하여 정의된 함수여야 한다.
+
+`coroutine` 객체가 생성 및 반환 후에 `coroutine`을 실행해주는 부분이 선언되어 있어야 작업(task)이 개시된다. 여기서 사용되는 개념이 바로 event loop이다. event loop는 하나의 thread에서 등록된 여러 코루틴 사이의 실행권을 가지고 연산을 수행시키는 역할을 한다. 
+쉽개 말하면, 무한히 loop를 돌며, loop마다 작업(task)을 하나씩 실행시키는 일종의 로직이다. thread에 event loop를 설정한다는 것은 **"작업, 즉 하나의 coroutine에서 출발하는 하나의 실행 흐름을 수행할 수 로직을 실행할 객체를 생성한 것"**이라고 이해하면 된다.
+
+이 때 전달받은 `coroutine` 객체는 `async def`를 사용하여 정의된 함수여야 한다.
 
 ``` python
 async def coroutine():
@@ -99,16 +103,67 @@ loop.close()
 
 ### Future(퓨쳐)와 Task(테스크)
 
-`coroutine` 내부에서 다른 작업, 즉 `sub coroutine`을 수행하는 경우에는 `Future`, `Task`와 같은 `Awaitable`한 객체(실행을 종료할 때까지 기다릴 객체)를 `await`과 함께 사용해야 한다.  
+`coroutine` 내부에서 다른 작업, 즉 `sub coroutine`을 수행하는 경우에는 `Future`, `Task`와 같은 `Awaitable`한 객체(실행을 종료할 때까지 기다릴 객체)를 `await`과 함께 사용해야 한다. 
 
-`Future`는 어떠한 작업의 실행 상태 및 결과를 저장하는 객체로, `add_done_callback()`으로 완료 시에 호출할 콜백함수를 등록할 수 있다. `.result()`로 실행결과를 반환하며, 작업의 실행을 시작하는 역할은 수행하지 않는다.
+`Future`는 어떠한 작업의 실행 상태 및 결과를 저장하는 객체로, non-blocking 작업을 리턴한다고 볼 수 있다. *(작업의 실행을 시작하는 역할은 수행하지 않는다.)* `add_done_callback()`으로 완료 시에 호출할 콜백함수를 등록할 수 있고, `result()`로 실행결과를 반환한다. 
+
+`Task`는 `Future`를 상속한 객체로, 작업의 실행 상태 및 결과를 저장한다. `Future`와는 달리 작업의 실행을 개시하는 역할까지 수행한다. `asyncio.run()` 또는 `asyncio.create_task()`함수<text style="color:grey;"> _(Python 3.6 이전에서는 `asyncio.ensure_future()`를 사용)_ </text>를 호출할 때 `coroutine` 객체를 인자로 전달하면, `Task`객체가 생성되면서 전달받은 `coroutine`이 `Task`로 실행되도록 예약된다.
 
 <br>
 
-### Event Loop가 Coroutine을 실행하는 방식
+## Event Loop가 Coroutine을 실행하는 방식
 
-... 
+
+`coroutine` 객체의 생성 및 반환이 `coroutine`의 실행을 의미하지 않는다고 하였다. 아래는 `coroutine`을 실행하기 위한 방법들이다.
+
+**1. `await` syntax**
+
+`coroutine` 내부에서만 사용할 수 있는 키워드이다. 따라서 `coroutine`을 처음 실행할 때는 사용할 수 없고, 다른 `coroutine` 내부에서 `sub coroutine`을 호출하는 경우에 사용할 수 있다. 다른 `coroutine`을 호출하고, 해당 작업이 완료될 때까지 기다린다. 또한 다른 `coroutine`에 대한 entry point라고도 이해할 수 있다. 
+
 <br>
+
+**2. `asyncio.run()` 함수**
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+**① 현재 실행 중인 thread에 새로운 event loop를 설정**하고<br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+**② 인자로 전달되는 `coroutine` 객체를 `task`로 예약하여 실행**하고<br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+**③`task`의 실행이 완료되면 event loop를 닫는 역할**을 수행한다.
+
+```python
+async def function():
+    try:
+        loop = asyncio.get_running loop()
+    except RuntimeError:
+        loop = asyncio.new_event_loop()
+    finally:
+        loop.run_until_complete(coroutine())
+        loop.close()
+```
+
+> **_NOTE:_** `get_event_loop()`는 실행 중인 event loop를 가져오기 위해 사용하는 함수로, 실행 중인 event loop가 없는 경우, `RuntimeError`를 발생시킨다. Python 3.10 이상에서는 지원되지 않는 함수로, coroutine이나 callback에서는 `get_running_loop()`를 사용하는 것이 권장된다. 
+
+<br>
+
+**3. `asyncio.create_task()`와 `asyncio.gather()` 함수**
+
+`asyncio.run()`은 기본적으로 하나의 task를 실행한다. 따라서 여러 `Task`객체를 생성하여 실행하는 경우에만 동시적(concurrent)성이 보장된다고 할 수 있다. 
+전달받은 여러 Awaitable 객체들이 완료될 때까지 기다렸다가, 그 완료 결과를 리스트 형태로 반환하는 함수가 바로 `asyncio.gather(*tasks)`이다.
+
+```python
+async def function():
+    tasks = [asyncio.create_task(_function(data)) for data in data_list] 
+    results = await asyncio.gather(*tasks)  # [result_task_1, result_task_2, ...]
+    return results
+``` 
+
+<br>
+
+## 참고
+- https://docs.python.org/3/library/asyncio.html
+- https://it-eldorado.tistory.com/159
+- https://soooprmx.com/asyncio/
 
 ``` toc
 ``` 
