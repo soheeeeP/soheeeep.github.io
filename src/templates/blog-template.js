@@ -7,6 +7,8 @@ import PostNavigator from '../components/post-navigator';
 import Post from '../models/post';
 import PostContent from '../components/post-content';
 import Utterances from '../components/utterances';
+import { Disqus } from "gatsby-plugin-disqus";
+
 
 function BlogTemplate({ data }) {
   const [viewCount, setViewCount] = useState(null);
@@ -16,6 +18,12 @@ function BlogTemplate({ data }) {
   const nextPost = data.next && new Post(data.next);
   const { siteUrl, comments } = data.site?.siteMetadata;
   const utterancesRepo = comments?.utterances?.repo;
+
+  const disqusConfig = {
+    url: siteUrl + curPost.slug,
+    identifier: curPost.id,
+    title: curPost.frontmatter,
+  };
 
   useEffect(() => {
     if (!siteUrl) return;
@@ -37,6 +45,7 @@ function BlogTemplate({ data }) {
       <Seo title={curPost?.title} description={curPost?.excerpt} />
       <PostHeader post={curPost} viewCount={viewCount} />
       <PostContent html={curPost.html} />
+      <Disqus style={{width: '100%'}} config={disqusConfig}/>
       <PostNavigator prevPost={prevPost} nextPost={nextPost} />
       {utterancesRepo && <Utterances repo={utterancesRepo} path={curPost.slug} />}
     </Layout>

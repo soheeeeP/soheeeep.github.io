@@ -7,6 +7,12 @@ module.exports = {
 
   plugins: [
     {
+      resolve: `gatsby-plugin-disqus`,
+      options: {
+          shortname: `soheeee-library`
+      }
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `assets`,
