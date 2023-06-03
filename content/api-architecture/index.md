@@ -29,7 +29,7 @@ API를 구성하는 요소들은 아래와 같다.
 
 API의 형식은 게속해서 발전하여 왔다. 그 중 가장 보편화된 3가지 방식에 대해 설명해보려 한다.
 
-![web-api.png](./web-api.png)
+![api-architecture-timeline.png](./api-architecture-timeline.png)
 <br>
 
 ### REST(REpresential State Transfer)
@@ -75,7 +75,7 @@ REST API와 달리 리소스에 대한 별도의 endpoint가 존재하지 않고
 
 Google에서 개발한 `RPC(Remote Procedure Call)` 프레임워크이다.
 
-![web-grpc.png](./web-grpc.png)
+![api-architecture-grpc.png](./api-architecture-grpc.png)
 
 **Stub 컴파일러가 `IDL(Identity Definition Language)` 호출규약을 정의하고 파라미터를 `Marshalling`/`UnMarshalling` 처리하여 RPC 프로토콜로 전달**한다. IDL에서 정의된 포맷에 따른 메세지를 주고받으며 단순히 `JSON`을 사용하는 것보다 일괄성 있게 데이터를 주고받을 수 있다.  
 > **_Marshalling/UnMarshalling_:** 데이터를 byte로 변환하고, 전송받은 byte 데이터를 복구하는 일련의 과정을 말한다. 데이터를 byte stream으로 변환하는 데이터와는 달리, 변환할 대상과 object가 한정되지 않는다는 특징이 있다.
@@ -130,7 +130,7 @@ message GetUserResponse { UserMessage user_message = 1; }
 
 필요에 따라 여러 API 형식을 혼합하여 사용할 수도 있다.
 
-![web-choose-api.png](./web-choose-api.png)
+![api-architecture-choose.png](./api-architecture-choose.png)
 <br>
 
 ### References
