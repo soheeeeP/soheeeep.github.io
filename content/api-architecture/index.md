@@ -133,7 +133,7 @@ message GetUserResponse { UserMessage user_message = 1; }
 ![api-architecture-choose.png](./api-architecture-choose.png)
 <br>
 
-### References
+## References
 - https://www.baeldung.com/rest-vs-graphql-vs-grpc
 - https://www.altexsoft.com/blog/soap-vs-rest-vs-graphql-vs-rpc/
 - https://code.tutsplus.com/tutorials/rest-vs-grpc-battle-of-the-apis--cms-30711
